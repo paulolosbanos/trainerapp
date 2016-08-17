@@ -20,3 +20,11 @@ PROJECT STRUCTURE
             |---widgets
             |---utils
             |---firebase
+3. GUIDE FOR NAMING XML ELEMENTS
+
+    3.1
+        EditText        : et_
+        TextView        : tv_
+        LinearLayout    : ll_
+        ..
+        etc
