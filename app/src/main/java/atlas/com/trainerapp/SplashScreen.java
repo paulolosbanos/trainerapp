@@ -12,6 +12,11 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        startActivity(new Intent(SplashScreen.this,AuthActivity.class));
+
+        Intent auth = new Intent(SplashScreen.this, AuthActivity.class);
+        auth.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+        startActivity(auth);
+        overridePendingTransition(0,0);
     }
 }

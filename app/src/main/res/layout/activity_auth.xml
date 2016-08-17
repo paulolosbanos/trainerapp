@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/brand_red"
-    android:orientation="vertical">
+<layout>
 
-    <atlas.com.trainerapp.widgets.TANonSwipePager
-        android:id="@+id/pager"
+    <data>
+        <variable
+            name="user"
+            type="atlas.com.trainerapp.authentication.views.AuthActivity" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_height="match_parent"
+        android:background="@color/brand_red"
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <atlas.com.trainerapp.widgets.TANonSwipePager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+</layout>

@@ -8,6 +8,8 @@
     <color name="brand_yellow">#F5D328</color>
     <color name="brand_white">#DCDEE0</color>
 
+    <color name="white">#FFFFFF</color>
+
     <color name="positive_green">#70BF41</color>
     <color name="negative_red">#EC5D57</color>
 
