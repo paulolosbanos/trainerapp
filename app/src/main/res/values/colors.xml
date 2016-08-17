@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/brand_red</color>
+    <color name="colorPrimaryDark">@color/brand_red</color>
+    <color name="colorAccent">@color/brand_yellow</color>
+
+    <color name="brand_red">#C82506</color>
+    <color name="brand_yellow">#F5D328</color>
+    <color name="brand_white">#DCDEE0</color>
+
+    <color name="positive_green">#70BF41</color>
+    <color name="negative_red">#EC5D57</color>
+
+    <color name="color_type_bug">#8FA401</color>
+    <color name="color_type_dark">#4D3A2E</color>
+    <color name="color_type_dragon">#4700F3</color>
+    <color name="color_type_electric">#F0BF00</color>
+    <color name="color_type_fairy">#F334FF</color>
+    <color name="color_type_fighting">#C82506</color>
+    <color name="color_type_fire">#E05D07</color>
+    <color name="color_type_flying">#8D6EDA</color>
+    <color name="color_type_ghost">#4F3773</color>
+    <color name="color_type_grass">#5AB22D</color>
+    <color name="color_type_ground">#D2A732</color>
+    <color name="color_type_ice">#71C7C6</color>
+    <color name="color_type_normal">#989A5F</color>
+    <color name="color_type_poison">#7B1E7D</color>
+    <color name="color_type_psychic">#F5125B</color>
+    <color name="color_type_rock">#927E1F</color>
+    <color name="color_type_steel">#9694B8</color>
+    <color name="color_type_water">#3C60EC</color>
+
+</resources>

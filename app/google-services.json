@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "453527267566",
+    "firebase_url": "https://trainer-app-2edb7.firebaseio.com",
+    "project_id": "trainer-app-2edb7",
+    "storage_bucket": "trainer-app-2edb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453527267566:android:7b7222251a0cbc98",
+        "android_client_info": {
+          "package_name": "atlas.com.trainerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453527267566-gg2rvl4donpe4919c9cr93fnhf7n087j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArzNFoSa2yuC0BLHaZBdrrzrKCzX9F1WE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
