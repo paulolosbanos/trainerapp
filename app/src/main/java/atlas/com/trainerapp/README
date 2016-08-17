@@ -1,0 +1,22 @@
+PROJECT STRUCTURE
+
+1. CREATE NEW BRANCH PER FEATURE
+
+    1.1 Example:
+            feature/battle-chat
+    1.2 Push to develop after completion
+
+2. CREATE NEW PACKAGE PER FEATURE
+
+    2.1 Example:
+            atlas.com.trainerapp
+            |---authentication
+                |---models
+                |---views
+                |---presenter/controller
+
+    2.2 General use class will be placed in root
+            atlas.com.trainerapp
+            |---widgets
+            |---utils
+            |---firebase
