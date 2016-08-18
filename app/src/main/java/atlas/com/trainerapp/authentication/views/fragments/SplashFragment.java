@@ -28,7 +28,7 @@ public class SplashFragment extends BaseFragment<FragmentSplashBinding> implemen
         mContainer = container;
         mInflater = inflater;
         setBindingSpecs(this);
-        return rootview;
+        return getBinding().getRoot();
     }
 
     @Override

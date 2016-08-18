@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import atlas.com.trainerapp.authentication.views.fragments.LoginFragment;
+import atlas.com.trainerapp.authentication.views.fragments.RegisterFragment;
 import atlas.com.trainerapp.authentication.views.fragments.SplashFragment;
 
 /**
@@ -14,6 +15,9 @@ public class AuthPagerAdapter extends FragmentStatePagerAdapter {
 
     public static final int NUM_PAGES = 3;
     public static final int ORIGIN = 1;
+    public static final int LOGIN = 0;
+    public static final int REGISTER = 2;
+
 
     public AuthPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -27,7 +31,7 @@ public class AuthPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new SplashFragment(); //splash
             case 2:
-                return new Fragment(); //register
+                return new RegisterFragment(); //register
             default:
                 return new Fragment();
         }

@@ -5,11 +5,12 @@
 
         <variable
             name="user"
-            type="atlas.com.trainerapp.authentication.views.fragments.LoginFragment" />
+            type="atlas.com.trainerapp.authentication.views.fragments.RegisterFragment" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_main_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -20,6 +21,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:orientation="vertical">
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/egg"
+                android:src="@drawable/egg"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/ll_logo"
@@ -81,11 +90,43 @@
                 android:layout_centerInParent="true"
                 android:layout_marginRight="70dp"
                 android:background="@drawable/bg_ta_edittext"
+                android:gravity="center"
+                android:maxLines="1"
                 android:paddingBottom="13dp"
-                android:paddingTop="13dp" />
+                android:paddingTop="13dp"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <atlas.com.trainerapp.widgets.TATextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="18dp"
+                android:text="E :"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <atlas.com.trainerapp.widgets.TAEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="70dp"
+                android:background="@drawable/bg_ta_edittext"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="13dp"
+                android:paddingTop="13dp"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,22 +149,27 @@
                 android:layout_centerInParent="true"
                 android:layout_marginRight="70dp"
                 android:background="@drawable/bg_ta_edittext"
+                android:gravity="center"
+                android:inputType="textPassword"
+                android:maxLines="1"
                 android:paddingBottom="13dp"
-                android:paddingTop="13dp" />
+                android:paddingTop="13dp"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <atlas.com.trainerapp.widgets.TAButton
+                android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LOGIN" />
+                android:text="BACK" />
 
             <atlas.com.trainerapp.widgets.TAButton
                 android:id="@+id/btn_register"
