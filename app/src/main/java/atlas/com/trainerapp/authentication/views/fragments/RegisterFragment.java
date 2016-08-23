@@ -27,8 +27,8 @@ public class RegisterFragment extends BaseFragment<FragmentRegisterBinding> impl
         inflater.inflate(R.layout.fragment_register, container, false);
         mInflater = inflater;
         mContainer = container;
-        mRegisterPresenter = new RegisterPresenter(getActivity());
         setBindingSpecs(this);
+        mRegisterPresenter = new RegisterPresenter(getActivity(),getBinding().llMainBody);
         init();
         return getBinding().getRoot();
     }

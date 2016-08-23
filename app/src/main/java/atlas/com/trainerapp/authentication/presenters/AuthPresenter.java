@@ -1,5 +1,7 @@
 package atlas.com.trainerapp.authentication.presenters;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -8,6 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import atlas.com.trainerapp.authentication.presenters.interfaces.SignInListener;
 import atlas.com.trainerapp.bases.BasePresenter;
+import atlas.com.trainerapp.main.views.MainActivity;
 import rx.Observable;
 
 /**
@@ -19,8 +22,10 @@ public class AuthPresenter extends BasePresenter{
     public FirebaseAuth.AuthStateListener mAuthListener;
 
     FirebaseUser mUser;
+    Activity mInstance;
 
-    public AuthPresenter(SignInListener listener) {
+    public AuthPresenter(Activity activity) {
+        mInstance = activity;
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -35,7 +40,7 @@ public class AuthPresenter extends BasePresenter{
                     mUser = null;
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                listener.onSignIn(mUser);
+                ((SignInListener) activity).onSignIn(mUser);
             }
         };
     }
@@ -47,6 +52,6 @@ public class AuthPresenter extends BasePresenter{
     public void onStopAuth() { if (mAuthListener != null) { mAuth.removeAuthStateListener(mAuthListener); } }
 
     public void goToHome() {
-        Log.e(TAG,"user "+ mUser);
+        mInstance.startActivity(new Intent(mInstance, MainActivity.class));
     }
 }

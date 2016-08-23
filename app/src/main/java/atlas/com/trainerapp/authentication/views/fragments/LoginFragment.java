@@ -30,7 +30,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
     }
 
     private void init() {
-        getBinding().btnRegister.clickObservable()
+        getBinding().tvRegister.clickObservable()
                 .map(aVoid -> (AuthActivity) getActivity())
                 .map(parent -> parent.mPager)
                 .subscribe(pager -> pager.setCurrentItem(AuthPagerAdapter.REGISTER,true));

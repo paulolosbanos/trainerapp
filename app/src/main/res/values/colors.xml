@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/brand_red</color>
-    <color name="colorPrimaryDark">@color/brand_red</color>
+    <color name="colorPrimary">@color/brand_black</color>
+    <color name="colorPrimaryDark">@color/brand_black</color>
     <color name="colorAccent">@color/brand_yellow</color>
 
-    <color name="brand_red">#C82506</color>
+    <color name="brand_black">#212121</color>
     <color name="brand_yellow">#F5D328</color>
     <color name="brand_white">#DCDEE0</color>
+
+    <color name="color_text_hint">#706F70</color>
 
     <color name="white">#FFFFFF</color>
 
