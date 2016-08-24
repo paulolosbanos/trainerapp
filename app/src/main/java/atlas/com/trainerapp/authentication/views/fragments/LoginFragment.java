@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import atlas.com.trainerapp.authentication.presenters.fragmentPresenters.LoginPresenter;
 import atlas.com.trainerapp.authentication.views.AuthActivity;
 import atlas.com.trainerapp.authentication.views.adapters.AuthPagerAdapter;
 import atlas.com.trainerapp.bases.BaseFragment;
@@ -18,6 +19,8 @@ import atlas.com.trainerapp.databinding.FragmentLoginBinding;
  */
 public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements FragmentBindingSpecs{
 
+    LoginPresenter mPresenter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,11 +28,18 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> implements
         mContainer = container;
         mInflater = inflater;
         setBindingSpecs(this);
+        mPresenter = new LoginPresenter(getActivity(),getBinding().llMainBody);
         init();
         return getBinding().getRoot();
     }
 
     private void init() {
+
+        getBinding().etEmail.textChange().subscribe(charSequence -> mPresenter.setEmail(charSequence));
+        getBinding().etPassword.textChange().subscribe(charSequence -> mPresenter.setPassword(charSequence));
+
+        getBinding().btnLogin.clickObservable().subscribe(aVoid1 -> mPresenter.clickLogin());
+
         getBinding().tvRegister.clickObservable()
                 .map(aVoid -> (AuthActivity) getActivity())
                 .map(parent -> parent.mPager)

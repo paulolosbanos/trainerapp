@@ -39,7 +39,6 @@ public class AuthActivity extends BaseActivity<ActivityAuthBinding> implements A
         mPager = getBinding().pager;
         mAuthPresenter = new AuthPresenter(this);
 
-
     }
 
     @Override

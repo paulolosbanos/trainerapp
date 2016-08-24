@@ -24,6 +24,8 @@ public class AuthPresenter extends BasePresenter{
     FirebaseUser mUser;
     Activity mInstance;
 
+    boolean isLoggedin = false;
+
     public AuthPresenter(Activity activity) {
         mInstance = activity;
         mAuth = FirebaseAuth.getInstance();
@@ -52,6 +54,12 @@ public class AuthPresenter extends BasePresenter{
     public void onStopAuth() { if (mAuthListener != null) { mAuth.removeAuthStateListener(mAuthListener); } }
 
     public void goToHome() {
-        mInstance.startActivity(new Intent(mInstance, MainActivity.class));
+        if (!isLoggedin) {
+            mInstance.finish();
+            mInstance.startActivity(new Intent(mInstance, MainActivity.class));
+            isLoggedin = true;
+            Log.e(TAG, "main");
+        }
     }
+        //mAuth.signOut();
 }

@@ -49,7 +49,7 @@ public class RegisterPresenter extends BasePresenter{
     }
 
     public void clickRegister() {
-        if(email.isEmpty() || password.isEmpty()) {
+        if(email.isEmpty() || password.isEmpty() || userName.isEmpty()) {
             Snackbar snackbar = Snackbar.make(mParentView,"Please fill out the form correctly.",Snackbar.LENGTH_INDEFINITE);
             Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
             snackbar.setAction("Okay",temp);
