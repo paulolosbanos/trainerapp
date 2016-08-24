@@ -26,13 +26,11 @@ public class RegisterPresenter extends BasePresenter{
     String userName;
     String password;
     String email;
-    Context mContext;
-    LinearLayout mParentView;
+
     public FirebaseAuth mAuth;
 
     public RegisterPresenter(FragmentActivity fa, LinearLayout llMainBody) {
-        mContext = fa;
-        mParentView = llMainBody;
+        super(fa,llMainBody);
         mAuth = FirebaseAuth.getInstance();
     }
 

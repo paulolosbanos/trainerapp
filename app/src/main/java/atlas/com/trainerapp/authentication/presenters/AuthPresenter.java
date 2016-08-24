@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +27,8 @@ public class AuthPresenter extends BasePresenter{
 
     boolean isLoggedin = false;
 
-    public AuthPresenter(Activity activity) {
+    public AuthPresenter(Activity activity,View main) {
+        super(activity,main);
         mInstance = activity;
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -58,7 +60,6 @@ public class AuthPresenter extends BasePresenter{
             mInstance.finish();
             mInstance.startActivity(new Intent(mInstance, MainActivity.class));
             isLoggedin = true;
-            Log.e(TAG, "main");
         }
     }
         //mAuth.signOut();

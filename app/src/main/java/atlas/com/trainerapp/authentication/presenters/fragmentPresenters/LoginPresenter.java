@@ -28,8 +28,6 @@ public class LoginPresenter extends BasePresenter {
     String email;
     String password;
 
-    Context mContext;
-    LinearLayout mParentView;
     public FirebaseAuth mAuth;
 
     public void setEmail(CharSequence email) {
@@ -42,8 +40,7 @@ public class LoginPresenter extends BasePresenter {
 
 
     public LoginPresenter(FragmentActivity fa, LinearLayout llMainBody) {
-        mContext = fa;
-        mParentView = llMainBody;
+        super(fa,llMainBody);
         mAuth = FirebaseAuth.getInstance();
     }
 

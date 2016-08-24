@@ -34,10 +34,10 @@ public class AuthActivity extends BaseActivity<ActivityAuthBinding> implements A
         setBindingSpecs(this);
 
         mAdapter = new AuthPagerAdapter(getSupportFragmentManager());
-        getBinding().pager.setAdapter(mAdapter);
-        getBinding().pager.setCurrentItem(AuthPagerAdapter.ORIGIN);
-        mPager = getBinding().pager;
-        mAuthPresenter = new AuthPresenter(this);
+        getBinding().pgrAuth.setAdapter(mAdapter);
+        getBinding().pgrAuth.setCurrentItem(AuthPagerAdapter.ORIGIN);
+        mPager = getBinding().pgrAuth;
+        mAuthPresenter = new AuthPresenter(this,getBinding().rlMain);
 
     }
 
@@ -50,7 +50,7 @@ public class AuthActivity extends BaseActivity<ActivityAuthBinding> implements A
                     if (user != null) {
                         mAuthPresenter.goToHome();
                     } else {
-                        getBinding().pager.setCurrentItem(AuthPagerAdapter.LOGIN,true);
+                        getBinding().pgrAuth.setCurrentItem(AuthPagerAdapter.LOGIN,true);
                     }
                 });
     }

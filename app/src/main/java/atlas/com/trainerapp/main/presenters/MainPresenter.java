@@ -3,6 +3,7 @@ package atlas.com.trainerapp.main.presenters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -15,17 +16,15 @@ import atlas.com.trainerapp.bases.BasePresenter;
 public class MainPresenter extends BasePresenter {
 
     public FirebaseAuth mAuth;
-    FragmentActivity mFragmentActivity;
-    Context mContext;
 
-    public MainPresenter(FragmentActivity fa) {
+    public MainPresenter(FragmentActivity fa, View main) {
+        super(fa,main);
         mAuth = FirebaseAuth.getInstance();
-        mContext = fa;
-        mFragmentActivity = fa;
+
     }
 
     public void signOut() {
         mAuth.signOut();
-        mFragmentActivity.startActivity(new Intent(mContext, AuthActivity.class));
+        mContext.startActivity(new Intent(mContext, AuthActivity.class));
     }
 }
