@@ -1,7 +1,6 @@
 package atlas.com.trainerapp.authentication.presenters.fragmentPresenters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
@@ -15,7 +14,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
+
+import atlas.com.trainerapp.authentication.models.User;
 import atlas.com.trainerapp.bases.BasePresenter;
+import atlas.com.trainerapp.managers.DataManager;
 import atlas.com.trainerapp.widgets.TATextView;
 
 /**
@@ -67,11 +71,23 @@ public class RegisterPresenter extends BasePresenter{
                         // signed in user can be handled in the listener.
                         if (task.isSuccessful()) {
                             Log.e(TAG,"success");
+                            createUserEntry(task.getResult().getUser());
                         } else {
                             Log.e(TAG,"fail");
                         }
                     }
                 });
+    }
+
+    private void createUserEntry(FirebaseUser user) {
+        User newUser = new User(user.getUid());
+        newUser.setUsername(userName);
+        newUser.setGroup("none");
+        newUser.setTeams(null);
+
+        DataManager.getInstance()
+                .addData(newUser)
+                .subscribe(aBoolean -> Log.e(TAG,"Creating new user: success"));
     }
 
     View.OnClickListener temp = new View.OnClickListener() {

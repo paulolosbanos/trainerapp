@@ -36,11 +36,11 @@ public class AuthPresenter extends BasePresenter{
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    // User is signed in
+                    // Usera is signed in
                     mUser = user;
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User is signed out
+                    // Usera is signed out
                     mUser = null;
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }

@@ -1,4 +1,4 @@
-package atlas.com.trainerapp.main.models;
+package atlas.com.trainerapp.authentication.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,10 +6,12 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+import atlas.com.trainerapp.bases.BaseModel;
+
 /**
  * Created by paulo.losbanos on 19/08/2016.
  */
-public class Team {
+public class Team extends BaseModel {
 
     @SerializedName("is-main-team")
     @Expose
@@ -17,6 +19,20 @@ public class Team {
     @SerializedName("members")
     @Expose
     private List<String> members = new ArrayList<String>();
+
+    public Team(String uid) {
+        super(uid);
+    }
+
+    @Override
+    public String getNode() {
+        return null;
+    }
+
+    @Override
+    public String getUid() {
+        return null;
+    }
 
     /**
      * @return The isMainTeam
