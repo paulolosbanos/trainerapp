@@ -14,8 +14,12 @@
             android:name=".main.views.MainActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".firstTimeLogin.views.FirstTimeLoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".authentication.views.AuthActivity"
             android:configChanges="orientation|screenSize"

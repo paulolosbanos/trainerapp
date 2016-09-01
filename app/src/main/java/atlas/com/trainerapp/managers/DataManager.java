@@ -15,10 +15,9 @@ import rx.Observable;
 public class DataManager {
 
     protected final String TAG = getClass().getSimpleName();
-    private static DatabaseReference mDatabase;
-
     private static DataManager mInstance;
 
+    private static DatabaseReference mDatabase;
     public static DataManager getInstance() {
         if(mInstance == null) {
             mInstance = new DataManager();

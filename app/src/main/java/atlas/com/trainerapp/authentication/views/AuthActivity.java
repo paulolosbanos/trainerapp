@@ -48,7 +48,7 @@ public class AuthActivity extends BaseActivity<ActivityAuthBinding> implements A
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(bool -> {
                     if (user != null) {
-                        mAuthPresenter.goToHome();
+                        mAuthPresenter.routeUser();
                     } else {
                         getBinding().pgrAuth.setCurrentItem(AuthPagerAdapter.LOGIN,true);
                     }

@@ -25,7 +25,7 @@ import atlas.com.trainerapp.widgets.TATextView;
 /**
  * Created by paulo.losbanos on 18/08/2016.
  */
-public class RegisterPresenter extends BasePresenter{
+public class RegisterPresenter extends BasePresenter {
 
     String userName;
     String password;
@@ -34,7 +34,7 @@ public class RegisterPresenter extends BasePresenter{
     public FirebaseAuth mAuth;
 
     public RegisterPresenter(FragmentActivity fa, LinearLayout llMainBody) {
-        super(fa,llMainBody);
+        super(fa, llMainBody);
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -51,10 +51,10 @@ public class RegisterPresenter extends BasePresenter{
     }
 
     public void clickRegister() {
-        if(email.isEmpty() || password.isEmpty() || userName.isEmpty()) {
-            Snackbar snackbar = Snackbar.make(mParentView,"Please fill out the form correctly.",Snackbar.LENGTH_INDEFINITE);
+        if (email.isEmpty() || password.isEmpty() || userName.isEmpty()) {
+            Snackbar snackbar = Snackbar.make(mParentView, "Please fill out the form correctly.", Snackbar.LENGTH_INDEFINITE);
             Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
-            snackbar.setAction("Okay",temp);
+            snackbar.setAction("Okay", temp);
             TextView textView = (TextView) layout.findViewById(android.support.design.R.id.snackbar_text);
             textView.setTypeface(new TATextView(mContext).typeFace());
             textView.setGravity(Gravity.CENTER);
@@ -70,24 +70,29 @@ public class RegisterPresenter extends BasePresenter{
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (task.isSuccessful()) {
-                            Log.e(TAG,"success");
+                            Log.e(TAG, "success");
                             createUserEntry(task.getResult().getUser());
                         } else {
-                            Log.e(TAG,"fail");
+                            Log.e(TAG, "fail");
                         }
                     }
                 });
     }
 
     private void createUserEntry(FirebaseUser user) {
+        User newUser = generateNewUser(user);
+        DataManager.getInstance()
+                .addData(newUser)
+                .subscribe(aBoolean -> Log.e(TAG, "Creating new user: success"));
+    }
+
+    private User generateNewUser(FirebaseUser user) {
         User newUser = new User(user.getUid());
         newUser.setUsername(userName);
         newUser.setGroup("none");
         newUser.setTeams(null);
-
-        DataManager.getInstance()
-                .addData(newUser)
-                .subscribe(aBoolean -> Log.e(TAG,"Creating new user: success"));
+        newUser.setFirstTimeLogin("true");
+        return newUser;
     }
 
     View.OnClickListener temp = new View.OnClickListener() {

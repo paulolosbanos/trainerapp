@@ -13,14 +13,11 @@ import atlas.com.trainerapp.bases.BaseModel;
  */
 public class User extends BaseModel {
 
-    @SerializedName("group")
-    @Expose
+    public static final String USER = "users";
+
+    private String firstTimeLogin = "false";
     private String group;
-    @SerializedName("username")
-    @Expose
     private String username;
-    @SerializedName("teams")
-    @Expose
     private List<Team> teams = new ArrayList<Team>();
 
     public User(String uid) {
@@ -69,8 +66,16 @@ public class User extends BaseModel {
         this.teams = teams;
     }
 
+    public String getFirstTimeLogin() {
+        return firstTimeLogin;
+    }
+
+    public void setFirstTimeLogin(String firstTimeLogin) {
+        this.firstTimeLogin = firstTimeLogin;
+    }
+
     @Override
     public String getNode() {
-        return "users";
+        return USER;
     }
 }

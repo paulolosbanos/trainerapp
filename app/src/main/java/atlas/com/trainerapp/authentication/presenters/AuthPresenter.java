@@ -9,29 +9,72 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import atlas.com.trainerapp.R;
 import atlas.com.trainerapp.authentication.presenters.interfaces.SignInListener;
+import atlas.com.trainerapp.authentication.presenters.interfaces.retrofit.AuthService;
 import atlas.com.trainerapp.bases.BasePresenter;
+import atlas.com.trainerapp.firstTimeLogin.views.FirstTimeLoginActivity;
 import atlas.com.trainerapp.main.views.MainActivity;
-import rx.Observable;
+import atlas.com.trainerapp.managers.RetrofitManager;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by paulo.losbanos on 17/08/2016.
  */
-public class AuthPresenter extends BasePresenter{
+public class AuthPresenter extends BasePresenter {
 
     public FirebaseAuth mAuth;
     public FirebaseAuth.AuthStateListener mAuthListener;
 
     FirebaseUser mUser;
     Activity mInstance;
+    AuthService mAuthService;
+    RetrofitManager mRetrofitManager;
 
     boolean isLoggedin = false;
 
-    public AuthPresenter(Activity activity,View main) {
-        super(activity,main);
+    public AuthPresenter(Activity activity, View main) {
+        super(activity, main);
         mInstance = activity;
         mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        mAuthListener = createAuthStateListener();
+        mRetrofitManager = RetrofitManager.getInstance();
+        mAuthService = mRetrofitManager.getRetrofitInstance().create(AuthService.class);
+    }
+
+    public void onStartAuth() {
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    public void onStopAuth() {
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    public void routeUser() {
+        if (!isLoggedin) {
+            mAuthService.getUserByUid(mUser.getUid())
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(user -> {
+                        //mInstance.overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
+                        mInstance.finish();
+                        if (user.getFirstTimeLogin().equals("true") && !isLoggedin) {
+                            Log.e(TAG, user.getUsername());
+                            mInstance.startActivity(new Intent(mInstance, FirstTimeLoginActivity.class));
+                        } else if (!isLoggedin){
+                            mInstance.startActivity(new Intent(mInstance, MainActivity.class));
+                        }
+                        isLoggedin = true;
+                    });
+        }
+
+    }
+
+    public FirebaseAuth.AuthStateListener createAuthStateListener() {
+        return new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -44,23 +87,8 @@ public class AuthPresenter extends BasePresenter{
                     mUser = null;
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                ((SignInListener) activity).onSignIn(mUser);
+                ((SignInListener) mInstance).onSignIn(mUser);
             }
         };
     }
-
-    public void onStartAuth() {
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-
-    public void onStopAuth() { if (mAuthListener != null) { mAuth.removeAuthStateListener(mAuthListener); } }
-
-    public void goToHome() {
-        if (!isLoggedin) {
-            mInstance.finish();
-            mInstance.startActivity(new Intent(mInstance, MainActivity.class));
-            isLoggedin = true;
-        }
-    }
-        //mAuth.signOut();
 }
