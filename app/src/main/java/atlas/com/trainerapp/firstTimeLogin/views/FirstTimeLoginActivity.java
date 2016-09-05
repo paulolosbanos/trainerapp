@@ -33,7 +33,7 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
         setContentView(R.layout.activity_first_time);
         setBindingSpecs(this);
         String uid = getIntent().getStringExtra(UID);
-        mAdapter = new FirstTimeLoginAdapter(getSupportFragmentManager(), this, uid,getBinding().ivInputAcceptIndicator);
+        mAdapter = new FirstTimeLoginAdapter(getSupportFragmentManager(), this, uid, getBinding().ivInputAcceptIndicator);
         init();
     }
 
@@ -46,6 +46,7 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
         getBinding().tvIndicator.setVisibility(View.GONE);
         getBinding().ibNext.setVisibility(View.GONE);
         getBinding().ibPrevious.setVisibility(View.GONE);
+
         RxViewPager.pageSelections(getBinding().pgrFirstTime)
                 .subscribe(position -> {
                     getBinding().tvIndicator.setText(String.format(format, (position)));
@@ -57,9 +58,11 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
                         getBinding().ibPrevious.setEnabled(false);
                     } else if (position > 1) {
                         getBinding().ibPrevious.setEnabled(true);
-                    } else{
+                    } else {
                         getBinding().ibPrevious.setEnabled(false);
                     }
+                    getBinding().ivInputAcceptIndicator.setVisibility(
+                            mAdapter.isAnswered(position) ? View.VISIBLE : View.INVISIBLE);
                 });
 
         getBinding().ibPrevious.clickObservable()
@@ -72,9 +75,10 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
         getBinding().ibNext.clickObservable()
                 .subscribe(aVoid -> {
                     int current = getBinding().pgrFirstTime.getCurrentItem();
+
                     if (current < mAdapter.getCount() - 1 && mAdapter.isAnswered(current)) {
                         getBinding().pgrFirstTime.setCurrentItem(current + 1);
-                        getBinding().ivInputAcceptIndicator.setVisibility(View.INVISIBLE);
+                        //getBinding().ivInputAcceptIndicator.setVisibility(View.INVISIBLE);
                     }
                 });
 
@@ -82,7 +86,7 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
                 .delay(3, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(bool -> {
-                    getBinding().pgrFirstTime.setCurrentItem(1);
+                    getBinding().pgrFirstTime.setCurrentItem(3);
                     getBinding().tvIndicator.setText(String.format(format, 1));
                     getBinding().ibNext.setEnabled(true);
                     getBinding().tvIndicator.setVisibility(View.VISIBLE);

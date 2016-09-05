@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.jakewharton.rxbinding.view.RxView;
+
 import atlas.com.trainerapp.R;
+import rx.Observable;
 
 /**
  * Created by paulo.losbanos on 29/08/2016.
@@ -15,7 +18,7 @@ import atlas.com.trainerapp.R;
 public class TAHexagonView extends LinearLayout {
     Context mContext;
 
-    int[] id = {R.id.hex_black, R.id.hex_blue, R.id.hex_red, R.id.hex_yellow};
+    int[] id = {R.id.hex_black, R.id.hex_blue, R.id.hex_red, R.id.hex_yellow,R.id.hex_white};
 
     public TAHexagonView(Context context) {
         super(context);
@@ -63,6 +66,8 @@ public class TAHexagonView extends LinearLayout {
                 return R.id.hex_red;
             case BLACK:
                 return R.id.hex_black;
+            case WHITE:
+                return R.id.hex_white;
             default:
                 return R.id.hex_black;
         }
@@ -73,12 +78,15 @@ public class TAHexagonView extends LinearLayout {
             TAImageView view = (TAImageView) v.findViewById(i);
             view.setVisibility(View.GONE);
         }
+    }
 
+    public Observable<Void> clickObservable(){
+        return RxView.clicks(this);
     }
 
     public static final String YELLOW = "yellow";
     public static final String BLUE = "blue";
     public static final String RED = "red";
     public static final String BLACK = "black";
-
+    public static final String WHITE = "white";
 }

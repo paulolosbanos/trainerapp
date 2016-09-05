@@ -38,9 +38,9 @@ public class TATextView extends TextView {
         mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Montserrat-Regular.otf");
         String font = "";
         if(attrs != null) {
-            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TATextView, 0, 0);
+            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TATextViewFont, 0, 0);
             try {
-                font = ta.getString(R.styleable.TATextView_font);
+                font = ta.getString(R.styleable.TATextViewFont_font);
             } finally {
                 ta.recycle();
             }
@@ -50,15 +50,19 @@ public class TATextView extends TextView {
     }
 
     private void chooseFont(String font) {
-        switch (font) {
-            case BARIOL:
-                mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Bariol.ttf");
-                break;
-            case MONTSERRAT:
-                mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Montserrat-Regular.otf");
-                break;
-            default:
-                mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Montserrat-Regular.otf");
+        if(font != null)
+            switch (font) {
+                case BARIOL:
+                    mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Bariol.ttf");
+                    break;
+                case MONTSERRAT:
+                    mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Montserrat-Regular.otf");
+                    break;
+                default:
+                    mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Montserrat-Regular.otf");
+            }
+        else {
+            mTypeFace = Typeface.createFromAsset(mContext.getAssets(),"fonts/Montserrat-Regular.otf");
         }
     }
 

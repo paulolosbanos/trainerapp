@@ -35,8 +35,6 @@
                 android:paddingBottom="10dp"
                 android:paddingRight="25dp"
                 android:paddingLeft="25dp"
-                android:clickable="true"
-                android:background="@drawable/selector_btn_first_time_login"
                 android:gravity="center">
 
                 <atlas.com.trainerapp.widgets.TATextView

@@ -32,4 +32,12 @@
         android:src="@drawable/view_hexagon_red"
         android:visibility="gone" />
 
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_white"
+        android:visibility="gone" />
+
+
 </LinearLayout>

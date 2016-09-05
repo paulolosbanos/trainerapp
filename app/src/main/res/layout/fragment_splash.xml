@@ -20,11 +20,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <atlas.com.trainerapp.widgets.TALoadingView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp" />
-
             <LinearLayout
                 android:id="@+id/ll_logo"
                 android:layout_width="match_parent"
@@ -38,7 +33,7 @@
                     android:gravity="center"
                     android:text="TRAINER"
                     android:textColor="@color/brand_white"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     app:font="montserrat" />
 
                 <atlas.com.trainerapp.widgets.TATextView
@@ -47,7 +42,7 @@
                     android:gravity="center"
                     android:text=" APP"
                     android:textColor="@color/brand_yellow"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     app:font="montserrat" />
 
 

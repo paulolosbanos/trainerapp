@@ -28,7 +28,7 @@ public class FirstTimeLoginAdapter extends FragmentStatePagerAdapter implements 
     public static final int NUM_PAGES = 6;
     private User userUpdated;
     private ImageView mIndicator;
-    Boolean[] mAnswered = {false, false, false, false};
+    Boolean[] mAnswered = {true, false, false, false, false, true};
     Context context;
 
     public FirstTimeLoginAdapter(FragmentManager fm, FirstTimeLoginActivity activity, String uid, ImageView ivInputAcceptIndicator) {
@@ -72,16 +72,18 @@ public class FirstTimeLoginAdapter extends FragmentStatePagerAdapter implements 
         switch (position) {
             case 1:
                 userUpdated.setUserType(answer.toString());
+                break;
             case 2:
                 userUpdated.setUsername(answer.toString());
+                break;
             case 3:
                 userUpdated.setGroup(answer.toString());
+                break;
             case 4:
-                if (answer instanceof List) {
-                    userUpdated.setTeams((List<Team>) answer);
-                }
+                userUpdated.setTeams((List<Team>) answer);
+                break;
             default:
-                //return new Fragment();
+
         }
         if (answer instanceof String) {
             if (!answer.toString().isEmpty()) {
@@ -107,5 +109,10 @@ public class FirstTimeLoginAdapter extends FragmentStatePagerAdapter implements 
 
     public Boolean isAnswered(int position) {
         return mAnswered[position];
+    }
+
+    @Override
+    public User getNewUserData() {
+        return userUpdated;
     }
 }

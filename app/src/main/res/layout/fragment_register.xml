@@ -161,6 +161,7 @@
                 android:layout_margin="20dp"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
+                app:font="montserrat"
                 android:text="Back"/>
     </LinearLayout>
 </layout>
