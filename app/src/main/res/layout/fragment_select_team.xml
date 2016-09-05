@@ -10,23 +10,53 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_centerInParent="true"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <atlas.com.trainerapp.widgets.TATextView
+            <atlas.com.trainerapp.widgets.TAEditText
+                style="@style/TA.FirstTimeLogin.EditText"
+                android:id="@+id/et_setup_team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/ll_btn_setup_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="@color/brand_white"
-                android:text="Select team"/>
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="25dp"
+                android:paddingLeft="25dp"
+                android:clickable="true"
+                android:background="@drawable/selector_btn_first_time_login"
+                android:gravity="center">
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="setup your"
+                    android:textAllCaps="true"
+                    android:textColor="@color/brand_white"
+                    android:textSize="15dp" />
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="team"
+                    android:textAllCaps="true"
+                    android:textColor="@color/brand_yellow"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
 
         </LinearLayout>
 

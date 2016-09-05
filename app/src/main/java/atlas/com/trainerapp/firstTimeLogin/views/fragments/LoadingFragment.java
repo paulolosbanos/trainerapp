@@ -10,11 +10,15 @@ import atlas.com.trainerapp.R;
 import atlas.com.trainerapp.bases.BaseFragment;
 import atlas.com.trainerapp.bases.interfaces.FragmentBindingSpecs;
 import atlas.com.trainerapp.databinding.FragmentLoadingBinding;
+import atlas.com.trainerapp.firstTimeLogin.presenters.interfaces.FragmentFormGroup;
 
 /**
  * Created by paulo.losbanos on 01/09/2016.
  */
 public class LoadingFragment extends BaseFragment<FragmentLoadingBinding> implements FragmentBindingSpecs {
+
+    FragmentFormGroup mFormGroup;
+    int mFragmentPosition;
 
     @Nullable
     @Override
@@ -27,7 +31,16 @@ public class LoadingFragment extends BaseFragment<FragmentLoadingBinding> implem
         return getBinding().getRoot();
     }
 
+    public LoadingFragment(){}
+
+    public LoadingFragment(FragmentFormGroup formGroup,int position) {
+        mFormGroup = formGroup;
+        mFragmentPosition = position;
+    }
+
     private void init() {
+        if (mFragmentPosition == 5)
+            getBinding().tvFlavorText.setText(getText(R.string.loading_fragment_saving));
     }
 
     @Override

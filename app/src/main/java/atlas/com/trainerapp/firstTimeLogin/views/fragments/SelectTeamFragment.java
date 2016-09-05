@@ -10,11 +10,14 @@ import atlas.com.trainerapp.R;
 import atlas.com.trainerapp.bases.BaseFragment;
 import atlas.com.trainerapp.bases.interfaces.FragmentBindingSpecs;
 import atlas.com.trainerapp.databinding.FragmentSelectTeamBinding;
+import atlas.com.trainerapp.firstTimeLogin.presenters.interfaces.FragmentFormGroup;
 
 /**
  * Created by paulo.losbanos on 01/09/2016.
  */
 public class SelectTeamFragment extends BaseFragment<FragmentSelectTeamBinding> implements FragmentBindingSpecs{
+
+    private FragmentFormGroup mFormGroup;
 
     @Nullable
     @Override
@@ -27,12 +30,18 @@ public class SelectTeamFragment extends BaseFragment<FragmentSelectTeamBinding> 
         return getBinding().getRoot();
     }
 
+    public SelectTeamFragment(){}
+
+    public SelectTeamFragment(FragmentFormGroup mFormGroup,int position) {
+        this.mFormGroup = mFormGroup;
+    }
+
     private void init() {
     }
 
     @Override
     public LayoutInflater getLayoutInflater() {
-        return null;
+        return mInflater;
     }
 
     @Override
@@ -42,6 +51,6 @@ public class SelectTeamFragment extends BaseFragment<FragmentSelectTeamBinding> 
 
     @Override
     public ViewGroup getViewGroup() {
-        return null;
+        return mContainer;
     }
 }

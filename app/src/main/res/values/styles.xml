@@ -14,16 +14,32 @@
     </style>
 
     <style name="TA.Auth.EditText" parent="Base.V7.Widget.AppCompat.EditText">
-        <item name="android:background">@drawable/bg_ta_edittext</item>
-        <item name="android:drawablePadding">15dp</item>
-        <item name="android:paddingBottom">15dp</item>
+        <item name="android:background">@drawable/bg_ta_edittext_auth</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
         <item name="android:textCursorDrawable">@null</item>
-        <item name="android:paddingTop">15dp</item>
-        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
         <item name="android:textColor">@color/brand_white</item>
         <item name="android:textColorHint">@color/color_text_hint</item>
         <item name="android:maxLines">1</item>
         <item name="android:layout_marginTop">1dp</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="TA.FirstTimeLogin.EditText" parent="Base.V7.Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/bg_ta_edittext_first_time_login</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textColor">@color/brand_grey</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
         <item name="android:textSize">20dp</item>
     </style>
 

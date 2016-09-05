@@ -18,6 +18,7 @@ public class User extends BaseModel {
     private String firstTimeLogin = "false";
     private String group;
     private String username;
+    private String userType;
     private List<Team> teams = new ArrayList<Team>();
 
     public User(String uid) {
@@ -72,6 +73,14 @@ public class User extends BaseModel {
 
     public void setFirstTimeLogin(String firstTimeLogin) {
         this.firstTimeLogin = firstTimeLogin;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     @Override

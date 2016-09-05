@@ -10,7 +10,7 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:background="@color/brand_black"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -27,11 +27,12 @@
                 android:layout_marginBottom="15dp"/>
 
             <atlas.com.trainerapp.widgets.TATextView
+                android:id="@+id/tv_flavor_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
-                android:textColor="@color/brand_white"
-                android:text="Creating Trainer data..."/>
+                android:textColor="@color/brand_grey"
+                android:text="@string/loading_fragment_creating"/>
 
         </LinearLayout>
 

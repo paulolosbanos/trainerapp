@@ -13,29 +13,14 @@
         android:id="@+id/ll_main_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:background="@color/brand_black"
+        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/brand_black"
-            android:gravity="left|center_vertical"
-            android:orientation="vertical">
-
-            <atlas.com.trainerapp.widgets.TAImageView
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:src="@drawable/ic_keyboard_arrow_left_white_48dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="40dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -58,7 +43,7 @@
                     android:gravity="center"
                     android:text="TRAINER"
                     android:textColor="@color/brand_white"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <atlas.com.trainerapp.widgets.TATextView
                     android:layout_width="wrap_content"
@@ -66,7 +51,7 @@
                     android:gravity="center"
                     android:text=" APP"
                     android:textColor="@color/brand_yellow"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
 
             </LinearLayout>
@@ -154,11 +139,6 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
             <atlas.com.trainerapp.widgets.TAButton
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
@@ -169,9 +149,16 @@
                 android:paddingTop="20dp"
                 android:text="REGISTER"
                 android:textColor="@color/brand_black"
-                android:textSize="20dp" />
+                android:textSize="15dp"/>
 
-        </RelativeLayout>
-
+            <atlas.com.trainerapp.widgets.TATextView
+                android:id="@+id/btn_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:text="Back"/>
     </LinearLayout>
 </layout>

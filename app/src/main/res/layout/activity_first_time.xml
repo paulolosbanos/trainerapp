@@ -10,17 +10,85 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
         android:id="@+id/ll_main_body"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:gravity="center"
         android:orientation="vertical">
 
-        <atlas.com.trainerapp.widgets.TACustomSpeedViewPager
-            android:id="@+id/pgr_first_time"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <atlas.com.trainerapp.widgets.TACustomSpeedViewPager
+                android:id="@+id/pgr_first_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <atlas.com.trainerapp.widgets.TAImageButton
+                        android:id="@+id/ib_previous"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:src="@drawable/selector_indicator" />
+
+                    <atlas.com.trainerapp.widgets.TATextView
+                        android:id="@+id/tv_indicator"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:text="%s  /  5"
+                        android:gravity="center"
+                        android:textColor="@color/brand_yellow"
+                        android:textSize="15dp"
+                        android:visibility="visible" />
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/iv_input_accept_indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_ta_ftl_circle_indicator_enabled"
+                            android:layout_centerInParent="true"/>
+
+                        <atlas.com.trainerapp.widgets.TAImageButton
+                            android:id="@+id/ib_next"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:background="@null"
+                            android:rotation="180"
+                            android:src="@drawable/selector_indicator" />
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </FrameLayout>
+
 
     </LinearLayout>
 </layout>

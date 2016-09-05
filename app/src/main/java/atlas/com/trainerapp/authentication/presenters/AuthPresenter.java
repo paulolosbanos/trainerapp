@@ -16,6 +16,7 @@ import atlas.com.trainerapp.bases.BasePresenter;
 import atlas.com.trainerapp.firstTimeLogin.views.FirstTimeLoginActivity;
 import atlas.com.trainerapp.main.views.MainActivity;
 import atlas.com.trainerapp.managers.RetrofitManager;
+import atlas.com.trainerapp.utils.DeviceUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -41,6 +42,7 @@ public class AuthPresenter extends BasePresenter {
         mAuthListener = createAuthStateListener();
         mRetrofitManager = RetrofitManager.getInstance();
         mAuthService = mRetrofitManager.getRetrofitInstance().create(AuthService.class);
+
     }
 
     public void onStartAuth() {
@@ -59,14 +61,13 @@ public class AuthPresenter extends BasePresenter {
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(user -> {
-                        //mInstance.overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
-                        mInstance.finish();
                         if (user.getFirstTimeLogin().equals("true") && !isLoggedin) {
-                            Log.e(TAG, user.getUsername());
                             mInstance.startActivity(new Intent(mInstance, FirstTimeLoginActivity.class));
                         } else if (!isLoggedin){
                             mInstance.startActivity(new Intent(mInstance, MainActivity.class));
                         }
+                        mInstance.finish();
+                        mInstance.overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                         isLoggedin = true;
                     });
         }
