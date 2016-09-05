@@ -9,18 +9,161 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/ll_main_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="50dp">
 
-        <atlas.com.trainerapp.widgets.TATextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="trainer"/>
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@color/dirty_white"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true">
 
+            <RelativeLayout
+                android:id="@+id/rl_trainer_card_body"
+                android:layout_width="match_parent"
+                android:layout_height="130dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_trainer_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="20dp">
+
+                    <atlas.com.trainerapp.widgets.TAHexagonView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_centerInParent="true"
+                        android:rotation="90"
+                        app:hexColorString="blue" />
+
+                    <atlas.com.trainerapp.widgets.TAImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/logo" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_trainer_detail_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/rl_trainer_logo">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <atlas.com.trainerapp.widgets.TATextView
+                            android:id="@+id/tv_trainer_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="0000-0000-0000"
+                            android:textColor="@color/brand_black"
+                            android:textSize="22dp"
+                            app:font="montserrat" />
+
+                        <atlas.com.trainerapp.widgets.TATextView
+                            android:id="@+id/tv_trainer_ign"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="pau1214"
+                            android:textColor="@color/brand_black"
+                            android:textSize="18dp"
+                            app:font="bariol" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_trainer_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/color_type_water"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="10dp"
+                        android:background="@color/color_type_water"/>
+
+                    <atlas.com.trainerapp.widgets.TATextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="trainer details"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"
+                        app:font="bariol" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/dirty_white"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:id="@+id/rl_team_card_body"
+                android:layout_width="match_parent"
+                android:layout_height="130dp">
+                <RelativeLayout
+                    android:id="@+id/rl_team_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/color_type_water"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="10dp"
+                        android:background="@color/color_type_water"/>
+
+                    <atlas.com.trainerapp.widgets.TATextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="main team"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"
+                        app:font="bariol" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </layout>

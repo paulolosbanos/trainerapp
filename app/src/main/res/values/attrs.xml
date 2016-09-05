@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Hexagon">
+        <attr name="hexColorString" format="string"/>
+    </declare-styleable>
+    <declare-styleable name="TATextView">
+        <attr name="font" format="string"/>
+    </declare-styleable>
+</resources>

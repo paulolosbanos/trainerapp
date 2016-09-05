@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_black" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_yellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_yellow"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_blue"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_red"
+        android:visibility="gone" />
+
+</LinearLayout>
