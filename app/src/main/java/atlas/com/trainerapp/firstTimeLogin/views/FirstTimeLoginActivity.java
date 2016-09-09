@@ -75,7 +75,6 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
         getBinding().ibNext.clickObservable()
                 .subscribe(aVoid -> {
                     int current = getBinding().pgrFirstTime.getCurrentItem();
-
                     if (current < mAdapter.getCount() - 1 && mAdapter.isAnswered(current)) {
                         getBinding().pgrFirstTime.setCurrentItem(current + 1);
                         //getBinding().ivInputAcceptIndicator.setVisibility(View.INVISIBLE);
@@ -86,7 +85,7 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
                 .delay(3, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(bool -> {
-                    getBinding().pgrFirstTime.setCurrentItem(3);
+                    getBinding().pgrFirstTime.setCurrentItem(4);
                     getBinding().tvIndicator.setText(String.format(format, 1));
                     getBinding().ibNext.setEnabled(true);
                     getBinding().tvIndicator.setVisibility(View.VISIBLE);

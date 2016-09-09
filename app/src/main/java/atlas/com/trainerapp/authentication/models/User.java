@@ -25,6 +25,8 @@ public class User extends BaseModel {
         super(uid);
     }
 
+    public User() {}
+
     /**
      * @return The group
      */

@@ -9,33 +9,45 @@
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rl_mainBody"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
 
+
         <LinearLayout
+            android:id="@+id/ll_input_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:orientation="vertical">
 
-            <atlas.com.trainerapp.widgets.TAEditText
-                style="@style/TA.FirstTimeLogin.EditText"
-                android:id="@+id/et_setup_team"
+            <atlas.com.trainerapp.widgets.TATeamView
+                android:id="@+id/team_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:gravity="center" />
+
+            <atlas.com.trainerapp.widgets.TAEditText
+                android:id="@+id/et_setup_team"
+                style="@style/TA.FirstTimeLogin.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/close_circle"
+                android:drawableRight="@drawable/check_circle" />
 
             <LinearLayout
                 android:id="@+id/ll_btn_setup_team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:gravity="center"
                 android:paddingBottom="10dp"
-                android:paddingRight="25dp"
                 android:paddingLeft="25dp"
-                android:gravity="center">
+                android:paddingRight="25dp"
+                android:paddingTop="10dp">
 
                 <atlas.com.trainerapp.widgets.TATextView
                     android:layout_width="wrap_content"
@@ -55,6 +67,43 @@
                     android:textSize="15dp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ll_suggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:id="@+id/tv_suggestion_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Do you mean?"
+                    android:textAllCaps="true"
+                    android:textColor="@color/brand_black"
+                    android:textSize="8dp" />
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:id="@+id/tv_suggest_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text="&lt;No Suggestion&gt;"
+                    android:textAllCaps="true"
+                    android:textColor="@color/brand_grey"
+                    android:textSize="15dp" />
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:id="@+id/tv_suggest_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&lt;No Suggestion&gt;"
+                    android:textAllCaps="true"
+                    android:textColor="@color/brand_grey"
+                    android:textSize="15dp" />
+            </LinearLayout>
 
         </LinearLayout>
 

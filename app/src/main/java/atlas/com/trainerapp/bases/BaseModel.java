@@ -12,6 +12,10 @@ public abstract class BaseModel {
         this.uid = uid;
     }
 
+    public BaseModel() {
+
+    }
+
 
     public abstract String getNode();
 

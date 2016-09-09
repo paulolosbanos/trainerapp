@@ -24,6 +24,10 @@ public class Team extends BaseModel {
         super(uid);
     }
 
+    public Team() {
+
+    }
+
     @Override
     public String getNode() {
         return null;
