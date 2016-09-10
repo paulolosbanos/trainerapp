@@ -48,10 +48,10 @@ public class TATeamView extends RelativeLayout {
 
     public void addPokemon(Pokemon pkmn) throws JSONException {
         roster.add(pkmn);
-        //updateView();
-        TAHexagonView view = (TAHexagonView) mView.findViewById(R.id.slot_1);
-        view.setVisibility(INVISIBLE);
-        view.setVisibility(VISIBLE);
+        updateView();
+//        TAHexagonView view = (TAHexagonView) mView.findViewById(R.id.slot_1);
+//        view.setVisibility(INVISIBLE);
+//        view.setVisibility(VISIBLE);
 
     }
 
