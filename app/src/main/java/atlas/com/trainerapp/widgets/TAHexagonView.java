@@ -43,7 +43,8 @@ public class TAHexagonView extends LinearLayout {
         this.mContext = context;
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mView = inflater.inflate(R.layout.view_hexagon, this, true);
+        mView = inflater.inflate(R.layout.view_hexagon, this, false);
+        addView(mView);
         String color = "";
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.Hexagon, 0, 0);
         try {
@@ -58,8 +59,8 @@ public class TAHexagonView extends LinearLayout {
     }
 
     public void setColor(String color) {
-        TAImageView iv = (TAImageView) mView.findViewById(R.id.hex_black);
-        iv.setVisibility(View.GONE);
+        TAImageView iv = (TAImageView) mView.findViewById(switchColor(color.toLowerCase()));
+        iv.setVisibility(View.VISIBLE);
     }
 
     private int switchColor(String color) {
