@@ -11,9 +11,11 @@ import com.jakewharton.rxbinding.support.v4.view.RxViewPager;
 import java.util.concurrent.TimeUnit;
 
 import atlas.com.trainerapp.R;
+import atlas.com.trainerapp.authentication.models.User;
 import atlas.com.trainerapp.bases.BaseActivity;
 import atlas.com.trainerapp.bases.interfaces.ActivityBindingSpecs;
 import atlas.com.trainerapp.databinding.ActivityFirstTimeBinding;
+import atlas.com.trainerapp.firstTimeLogin.presenters.FirstTimeLoginPresenter;
 import atlas.com.trainerapp.firstTimeLogin.views.adapters.FirstTimeLoginAdapter;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -26,13 +28,14 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
     FirstTimeLoginAdapter mAdapter;
     public static final String UID = "uid";
     public static final String TAG = "FirstTimeLoginActivity";
-
+    private FirstTimeLoginPresenter mPresenter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_time);
         setBindingSpecs(this);
         String uid = getIntent().getStringExtra(UID);
+        mPresenter = new FirstTimeLoginPresenter(this,getBinding().llMainBody);
         mAdapter = new FirstTimeLoginAdapter(getSupportFragmentManager(), this, uid, getBinding().ivInputAcceptIndicator);
         init();
     }
@@ -56,13 +59,15 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
                         getBinding().ibPrevious.setVisibility(View.GONE);
                         getBinding().ibNext.setEnabled(false);
                         getBinding().ibPrevious.setEnabled(false);
+                        getBinding().ivInputAcceptIndicator.setVisibility(View.GONE);
+                        updateUserData();
                     } else if (position > 1) {
                         getBinding().ibPrevious.setEnabled(true);
                     } else {
                         getBinding().ibPrevious.setEnabled(false);
                     }
                     getBinding().ivInputAcceptIndicator.setVisibility(
-                            mAdapter.isAnswered(position) ? View.VISIBLE : View.INVISIBLE);
+                            (mAdapter.isAnswered(position) && position != 5) ? View.VISIBLE : View.INVISIBLE);
                 });
 
         getBinding().ibPrevious.clickObservable()
@@ -85,13 +90,17 @@ public class FirstTimeLoginActivity extends BaseActivity<ActivityFirstTimeBindin
                 .delay(3, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(bool -> {
-                    getBinding().pgrFirstTime.setCurrentItem(4);
+                    getBinding().pgrFirstTime.setCurrentItem(1);
                     getBinding().tvIndicator.setText(String.format(format, 1));
                     getBinding().ibNext.setEnabled(true);
                     getBinding().tvIndicator.setVisibility(View.VISIBLE);
                     getBinding().ibNext.setVisibility(View.VISIBLE);
                     getBinding().ibPrevious.setVisibility(View.VISIBLE);
                 });
+    }
+
+    private void updateUserData() {
+        mPresenter.updateUser(mAdapter.getUpdatedUser());
     }
 
 

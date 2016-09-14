@@ -45,22 +45,34 @@ public class SelectTeamFragmentPresenter extends BasePresenter {
 
     public void addPokemon(String pkmnName, TATeamView teamView) {
         if (!mTeam.getMembers().contains(pkmnName)) {
-            mTeam.getMembers().add(pkmnName);
             mFTLService.getPokemon(pkmnName)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread()).
                     subscribe(pokemon -> {
                         Log.e(TAG, pokemon.getName());
                         try {
+                            mTeam.getMembers().add(pkmnName);
                             teamView.addPokemon(pokemon);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     });
         }
+    }
 
-
-
+    public void deletePokemon(String pkmnName, TATeamView teamView) {
+        mFTLService.getPokemon(pkmnName)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread()).
+                subscribe(pokemon -> {
+                    Log.e(TAG, pokemon.getName());
+                    try {
+                        mTeam.getMembers().remove(pkmnName);
+                        teamView.removePokemon(pokemon);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 
     public Team getNewTeam() {

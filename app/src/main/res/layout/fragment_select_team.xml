@@ -33,6 +33,7 @@
 
             <atlas.com.trainerapp.widgets.TAEditText
                 android:id="@+id/et_setup_team"
+                android:inputType="text|textNoSuggestions"
                 style="@style/TA.FirstTimeLogin.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,6 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:visibility="gone"
                     android:text="Do you mean?"
                     android:textAllCaps="true"
                     android:textColor="@color/brand_black"
@@ -91,6 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:text="&lt;No Suggestion&gt;"
+                    android:visibility="gone"
                     android:textAllCaps="true"
                     android:textColor="@color/brand_grey"
                     android:textSize="15dp" />
@@ -100,6 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="&lt;No Suggestion&gt;"
+                    android:visibility="gone"
                     android:textAllCaps="true"
                     android:textColor="@color/brand_grey"
                     android:textSize="15dp" />

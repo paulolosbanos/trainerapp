@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import atlas.com.trainerapp.R;
+import atlas.com.trainerapp.authentication.models.User;
 import atlas.com.trainerapp.bases.BaseFragment;
 import atlas.com.trainerapp.bases.interfaces.FragmentBindingSpecs;
 import atlas.com.trainerapp.databinding.FragmentLoadingBinding;
@@ -39,8 +40,9 @@ public class LoadingFragment extends BaseFragment<FragmentLoadingBinding> implem
     }
 
     private void init() {
-        if (mFragmentPosition == 5)
+        if (mFragmentPosition == 5) {
             getBinding().tvFlavorText.setText(getText(R.string.loading_fragment_saving));
+        }
     }
 
     @Override

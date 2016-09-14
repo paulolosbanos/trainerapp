@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrainerApp</string>
+    <string name="app_name">Trainer App</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="loading_fragment_creating">Creating trainer data...</string>
     <string name="loading_fragment_saving">Saving trainer data...</string>

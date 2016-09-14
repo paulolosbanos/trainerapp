@@ -44,4 +44,11 @@ public class DataManager {
         }
         return Observable.just(false);
     }
+
+    public Observable<Boolean> updateData(BaseModel object,String uid) {
+        if(mDatabase != null) {
+            mDatabase.child(object.getNode()).child(uid).setValue(object);
+        }
+        return Observable.just(true);
+    }
 }

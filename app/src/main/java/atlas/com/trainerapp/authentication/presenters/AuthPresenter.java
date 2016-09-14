@@ -9,13 +9,17 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.concurrent.TimeUnit;
+
 import atlas.com.trainerapp.R;
+import atlas.com.trainerapp.authentication.models.User;
 import atlas.com.trainerapp.authentication.presenters.interfaces.SignInListener;
 import atlas.com.trainerapp.authentication.presenters.interfaces.retrofit.AuthService;
 import atlas.com.trainerapp.bases.BasePresenter;
 import atlas.com.trainerapp.firstTimeLogin.views.FirstTimeLoginActivity;
 import atlas.com.trainerapp.main.views.MainActivity;
 import atlas.com.trainerapp.managers.RetrofitManager;
+import atlas.com.trainerapp.managers.UserDataManager;
 import atlas.com.trainerapp.utils.DeviceUtils;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -32,6 +36,7 @@ public class AuthPresenter extends BasePresenter {
     Activity mInstance;
     AuthService mAuthService;
     RetrofitManager mRetrofitManager;
+    UserDataManager mUserDataManager;
 
     boolean isLoggedin = false;
 
@@ -42,7 +47,7 @@ public class AuthPresenter extends BasePresenter {
         mAuthListener = createAuthStateListener();
         mRetrofitManager = RetrofitManager.getInstance();
         mAuthService = mRetrofitManager.getRetrofitInstance().create(AuthService.class);
-
+        mUserDataManager = UserDataManager.getInstance();
     }
 
     public void onStartAuth() {
@@ -61,11 +66,17 @@ public class AuthPresenter extends BasePresenter {
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(user -> {
+                        boolean isNull = user == null;
+                        if(isNull) {
+                            routeUser();
+                            return;
+                        }
                         if (user.getFirstTimeLogin().equals("true") && !isLoggedin) {
                             mInstance.startActivity(new Intent(mInstance, FirstTimeLoginActivity.class));
                         } else if (!isLoggedin){
                             mInstance.startActivity(new Intent(mInstance, MainActivity.class));
                         }
+                        mUserDataManager.setUser(user);
                         mInstance.finish();
                         mInstance.overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
                         isLoggedin = true;

@@ -84,10 +84,10 @@ public class TAEditText extends EditText implements View.OnTouchListener {
 
         if(event.getAction() == MotionEvent.ACTION_UP) {
             if(event.getRawX() >= (getRight() - getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                mListener.OnCheck();
+                mListener.OnClick(true);
                 return false;
             } else if(event.getRawX() <= (getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width())) {
-                mListener.OnCross();
+                mListener.OnClick(false);
                 return false;
             }
         }
@@ -95,7 +95,6 @@ public class TAEditText extends EditText implements View.OnTouchListener {
     }
 
     public interface ButtonListener {
-        void OnCheck();
-        void OnCross();
+        void OnClick(boolean isCheck);
     }
 }

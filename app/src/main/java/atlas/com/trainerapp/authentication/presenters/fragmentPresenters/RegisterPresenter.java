@@ -93,6 +93,7 @@ public class RegisterPresenter extends BasePresenter {
         newUser.setTeams(null);
         newUser.setFirstTimeLogin("true");
         newUser.setUserType("normal");
+        newUser.setUniqueId(user.getUid());
         return newUser;
     }
 

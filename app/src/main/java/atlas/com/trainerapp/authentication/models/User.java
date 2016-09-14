@@ -20,6 +20,7 @@ public class User extends BaseModel {
     private String username;
     private String userType;
     private List<Team> teams = new ArrayList<Team>();
+    private String uniqueId;
 
     public User(String uid) {
         super(uid);
@@ -83,6 +84,14 @@ public class User extends BaseModel {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
     }
 
     @Override

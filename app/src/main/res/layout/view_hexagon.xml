@@ -46,5 +46,95 @@
         android:src="@drawable/view_hexagon_grey"
         android:visibility="gone" />
 
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_bug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_bug"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_dark"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_dragon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_dragon"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_fairy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_fairy"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_fire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_fire"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_flying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_flying"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_ghost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_ghost"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_grass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_grass"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_ground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_ground"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_ice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_ice"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_normal"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_poison"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_poison"
+        android:visibility="gone" />
+
+    <atlas.com.trainerapp.widgets.TAImageView
+        android:id="@+id/hex_psychic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view_hexagon_psychic"
+        android:visibility="gone" />
 
 </LinearLayout>

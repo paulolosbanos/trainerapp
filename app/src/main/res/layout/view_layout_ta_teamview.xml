@@ -14,7 +14,7 @@
         android:gravity="center">
 
         <atlas.com.trainerapp.widgets.TAHexagonView
-            android:id="@+id/slot_1"
+            android:id="@+id/slot_2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:rotation="90"
@@ -29,7 +29,7 @@
             android:src="@drawable/logo" />
 
         <atlas.com.trainerapp.widgets.TAHexagonView
-            android:id="@+id/slot_2"
+            android:id="@+id/slot_5"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:rotation="90"
@@ -42,6 +42,14 @@
         android:layout_height="wrap_content">
 
         <atlas.com.trainerapp.widgets.TAHexagonView
+            android:id="@+id/slot_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="1dp"
+            android:rotation="90"
+            app:hexColorString="grey" />
+
+        <atlas.com.trainerapp.widgets.TAHexagonView
             android:id="@+id/slot_3"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -51,14 +59,6 @@
 
         <atlas.com.trainerapp.widgets.TAHexagonView
             android:id="@+id/slot_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="1dp"
-            android:rotation="90"
-            app:hexColorString="grey" />
-
-        <atlas.com.trainerapp.widgets.TAHexagonView
-            android:id="@+id/slot_5"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="1dp"

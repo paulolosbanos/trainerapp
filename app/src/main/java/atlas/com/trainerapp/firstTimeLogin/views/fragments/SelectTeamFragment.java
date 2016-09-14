@@ -7,16 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import atlas.com.trainerapp.R;
+import atlas.com.trainerapp.authentication.models.Team;
 import atlas.com.trainerapp.bases.BaseFragment;
 import atlas.com.trainerapp.bases.interfaces.FragmentBindingSpecs;
 import atlas.com.trainerapp.databinding.FragmentSelectTeamBinding;
 import atlas.com.trainerapp.firstTimeLogin.presenters.SelectTeamFragmentPresenter;
 import atlas.com.trainerapp.firstTimeLogin.presenters.interfaces.FragmentFormGroup;
 import atlas.com.trainerapp.widgets.TAEditText;
+import atlas.com.trainerapp.widgets.TATeamView;
 import atlas.com.trainerapp.widgets.TATextView;
+import rx.Observable;
 import rx.functions.Action1;
 
 /**
@@ -27,7 +31,7 @@ public class SelectTeamFragment extends BaseFragment<FragmentSelectTeamBinding> 
     private FragmentFormGroup mFormGroup;
     SelectTeamFragmentPresenter mPresenter;
     TATextView[] tvSuggestion = new TATextView[2];
-
+    int mFragmentPosition;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,40 +51,36 @@ public class SelectTeamFragment extends BaseFragment<FragmentSelectTeamBinding> 
 
     public SelectTeamFragment(FragmentFormGroup mFormGroup, int position) {
         this.mFormGroup = mFormGroup;
+        this.mFragmentPosition = position;
     }
 
     private void init() {
-        String defaultText = getBinding().tvSuggest1.getText().toString();
+//        String defaultText = getBinding().tvSuggest1.getText().toString();
         hideSuggestion(true);
-        getBinding().etSetupTeam.setButtonListener(new TAEditText.ButtonListener() {
-            @Override
-            public void OnCheck() {
+        getBinding().etSetupTeam.setButtonListener(isCheck -> {
+            if(isCheck) {
                 mPresenter.addPokemon(getBinding().etSetupTeam.getText().toString(),getBinding().teamView);
                 getBinding().etSetupTeam.setText("");
-                //Log.e(TAG,mPresenter.getNewTeam().getMembers().toString());
-            }
-
-            @Override
-            public void OnCross() {
-                Log.e("TAG", "das");
+            } else {
+                mPresenter.deletePokemon(getBinding().etSetupTeam.getText().toString(),getBinding().teamView);
+                getBinding().etSetupTeam.setText("");
             }
         });
-        getBinding().etSetupTeam
-                .textChange()
-                .map(charSequence -> {
-                    hideSuggestion(charSequence.length() < 3);
-                    getBinding().tvSuggest1.setText(defaultText);
-                    getBinding().tvSuggest2.setText(defaultText);
-                    return mPresenter.getSuggestionObservable(charSequence.toString());
-                })
-                .subscribe(listObservable -> {
-                    listObservable.subscribe(suggestions -> {
-                        hideSuggestion(false);
-                        for(int i = 0;i < suggestions.size();i++) {
-                            tvSuggestion[i].setText(suggestions.get(i));
-                        }
-                    });
-                });
+
+        getBinding().teamView.slotClick(name -> {
+            if (name != null)
+                getBinding().etSetupTeam.setText(name);
+        });
+
+        getBinding().teamView.rosterCountUpdate(count -> {
+            if(count == 6) {
+                Log.e(TAG,count+"");
+                ArrayList<Team> teams = new ArrayList<>();
+                teams.add(mPresenter.getNewTeam());
+                mFormGroup.onAnswer(mFragmentPosition, teams);
+                mFormGroup.isAnswerAccepted(true);
+            }
+        });
 
         getBinding().tvSuggest1.clickObservable().subscribe(aVoid -> {
             hideSuggestion(true);
