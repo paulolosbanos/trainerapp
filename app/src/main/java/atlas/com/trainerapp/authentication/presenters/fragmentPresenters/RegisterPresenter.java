@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.gson.Gson;
 
 import atlas.com.trainerapp.authentication.models.User;
 import atlas.com.trainerapp.bases.BasePresenter;
@@ -27,7 +26,7 @@ import atlas.com.trainerapp.widgets.TATextView;
  */
 public class RegisterPresenter extends BasePresenter {
 
-    String userName;
+    String userName = "default";
     String password;
     String email;
 
@@ -51,7 +50,7 @@ public class RegisterPresenter extends BasePresenter {
     }
 
     public void clickRegister() {
-        if (email.isEmpty() || password.isEmpty() || userName.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             Snackbar snackbar = Snackbar.make(mParentView, "Please fill out the form correctly.", Snackbar.LENGTH_INDEFINITE);
             Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
             snackbar.setAction("Okay", temp);
@@ -92,7 +91,7 @@ public class RegisterPresenter extends BasePresenter {
         newUser.setGroup("none");
         newUser.setTeams(null);
         newUser.setFirstTimeLogin("true");
-        newUser.setUserType("normal");
+        newUser.setFriendCode("0000-0000-0000");
         newUser.setUniqueId(user.getUid());
         return newUser;
     }

@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import atlas.com.trainerapp.bases.BasePresenter;
 import atlas.com.trainerapp.firstTimeLogin.models.Pokemon;
 import atlas.com.trainerapp.firstTimeLogin.presenters.interfaces.retrofit.FTLService;
 import atlas.com.trainerapp.managers.RetrofitManager;
+import atlas.com.trainerapp.utils.GsonUtils;
 import atlas.com.trainerapp.widgets.TATeamView;
 import rx.Observable;
 import rx.Subscriber;
@@ -51,7 +53,7 @@ public class SelectTeamFragmentPresenter extends BasePresenter {
                     subscribe(pokemon -> {
                         Log.e(TAG, pokemon.getName());
                         try {
-                            mTeam.getMembers().add(pkmnName);
+                            mTeam.getMembers().add(GsonUtils.toJSONString(getPokemonSnippet(pokemon)));
                             teamView.addPokemon(pokemon);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -60,7 +62,19 @@ public class SelectTeamFragmentPresenter extends BasePresenter {
         }
     }
 
+    private Pokemon getPokemonSnippet(Pokemon p) {
+        Pokemon temp = new Pokemon();
+        temp.setId(p.getId());
+        temp.setName(p.getName());
+        temp.setStats(p.getStats());
+        temp.setAbilities(p.getAbilities());
+        temp.setTyping(p.getTyping());
+
+        return temp;
+    }
+
     public void deletePokemon(String pkmnName, TATeamView teamView) {
+        if(pkmnName.isEmpty() || pkmnName != null) return;
         mFTLService.getPokemon(pkmnName)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).
@@ -76,6 +90,7 @@ public class SelectTeamFragmentPresenter extends BasePresenter {
     }
 
     public Team getNewTeam() {
+        mTeam.setMainTeam("true");
         return mTeam;
     }
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,7 +18,6 @@ import atlas.com.trainerapp.firstTimeLogin.views.fragments.LoadingFragment;
 import atlas.com.trainerapp.firstTimeLogin.views.fragments.SelectGuildFragment;
 import atlas.com.trainerapp.firstTimeLogin.views.fragments.SelectTeamFragment;
 import atlas.com.trainerapp.firstTimeLogin.views.fragments.SelectTrainerNameFragment;
-import atlas.com.trainerapp.widgets.TAImageButton;
 
 /**
  * Created by paulo.losbanos on 01/09/2016.
@@ -71,7 +69,7 @@ public class FirstTimeLoginAdapter extends FragmentStatePagerAdapter implements 
     public void onAnswer(int position, Object answer) {
         switch (position) {
             case 1:
-                userUpdated.setUserType(answer.toString());
+                userUpdated.setFriendCode(answer.toString());
                 break;
             case 2:
                 userUpdated.setUsername(answer.toString());

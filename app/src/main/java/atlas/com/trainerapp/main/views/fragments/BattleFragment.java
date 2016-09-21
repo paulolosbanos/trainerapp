@@ -27,7 +27,7 @@ public class BattleFragment extends BaseFragment<FragmentBattleBinding> implemen
         mInflater = inflater;
         setBindingSpecs(this);
 
-        mPresenter = new BattlePresenter(getActivity(),getBinding().llMainBody);
+        mPresenter = new BattlePresenter(getActivity(),getBinding().llMainBodyBattle);
         init();
         return getBinding().getRoot();
     }

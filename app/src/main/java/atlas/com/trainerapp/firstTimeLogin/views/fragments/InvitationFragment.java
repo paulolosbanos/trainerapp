@@ -2,6 +2,7 @@ package atlas.com.trainerapp.firstTimeLogin.views.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ public class InvitationFragment extends BaseFragment<FragmentInvitationBinding> 
 
     private FragmentFormGroup mFormGroup;
     private int mFragmentPosition;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,13 +43,13 @@ public class InvitationFragment extends BaseFragment<FragmentInvitationBinding> 
     private void init() {
         getBinding().etInvitationCode.textChange()
                 .subscribe(charSequence -> {
-                    mFormGroup.onAnswer(mFragmentPosition,charSequence.toString());
-                    if(charSequence.toString().isEmpty()) {
+                    mFormGroup.onAnswer(mFragmentPosition, charSequence.toString());
+                    if (charSequence.toString().isEmpty()) {
                         mFormGroup.isAnswerAccepted(false);
                     } else {
                         mFormGroup.isAnswerAccepted(true);
                     }
-        });
+                });
     }
 
     @Override

@@ -57,6 +57,13 @@ public class SelectTeamFragment extends BaseFragment<FragmentSelectTeamBinding> 
     private void init() {
 //        String defaultText = getBinding().tvSuggest1.getText().toString();
         hideSuggestion(true);
+        mPresenter.addPokemon("pikachu",getBinding().teamView);
+        mPresenter.addPokemon("squirtle",getBinding().teamView);
+        mPresenter.addPokemon("bulbasaur",getBinding().teamView);
+        mPresenter.addPokemon("zubat",getBinding().teamView);
+        mPresenter.addPokemon("caterpie",getBinding().teamView);
+        mPresenter.addPokemon("pidgey",getBinding().teamView);
+
         getBinding().etSetupTeam.setButtonListener(isCheck -> {
             if(isCheck) {
                 mPresenter.addPokemon(getBinding().etSetupTeam.getText().toString(),getBinding().teamView);

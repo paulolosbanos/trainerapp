@@ -55,7 +55,8 @@ public class TATeamView extends RelativeLayout {
 //        TAHexagonView view = (TAHexagonView) mView.findViewById(R.id.slot_1);
 //        view.setVisibility(INVISIBLE);
 //        view.setVisibility(VISIBLE);
-        mListenerRosterCount.OnRosterCountUpdate(roster.size());
+        if(mListenerRosterCount != null)
+            mListenerRosterCount.OnRosterCountUpdate(roster.size());
     }
 
     public void removePokemon(Pokemon pokemon) throws JSONException {

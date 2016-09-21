@@ -9,20 +9,174 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ll_main_body"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/ll_main_body_battle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:gravity="center"
         android:orientation="vertical">
 
-        <atlas.com.trainerapp.widgets.TATextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:font="montserrat"
-            android:text="battle"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:background="@color/dirty_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <atlas.com.trainerapp.widgets.TATextView
+                            android:id="@+id/tv_trainer_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="0000-0000-0000"
+                            android:textColor="@color/brand_black"
+                            android:textSize="18dp"
+                            app:font="montserrat" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <atlas.com.trainerapp.widgets.TATextView
+                                android:id="@+id/tv_trainer_ign_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="IGN : "
+                                android:textAllCaps="true"
+                                android:textColor="@color/brand_black"
+                                android:textSize="14dp" />
+
+                            <atlas.com.trainerapp.widgets.TATextView
+                                android:id="@+id/tv_trainer_ign"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="pau1214"
+                                android:textAllCaps="true"
+                                android:textColor="@color/brand_black"
+                                android:textSize="14dp"
+                                app:font="bariol" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dirty_white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp">
+
+                        <atlas.com.trainerapp.widgets.TATextView
+                            android:id="@+id/tv_trainer_code_vs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="0000-0000-0000"
+                            android:textColor="@color/brand_black"
+                            android:textSize="18dp"
+                            app:font="montserrat" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <atlas.com.trainerapp.widgets.TATextView
+                                android:id="@+id/tv_trainer_ign_label_vs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="IGN : "
+                                android:textAllCaps="true"
+                                android:textColor="@color/brand_black"
+                                android:textSize="14dp" />
+
+                            <atlas.com.trainerapp.widgets.TATextView
+                                android:id="@+id/tv_trainer_ign_vs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="pau1214"
+                                android:textAllCaps="true"
+                                android:textColor="@color/brand_black"
+                                android:textSize="14dp"
+                                app:font="bariol" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_trainer_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:padding="20dp">
+
+                <atlas.com.trainerapp.widgets.TAHexagonView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_centerInParent="true"
+                    app:hexColorString="white" />
+
+                <atlas.com.trainerapp.widgets.TAHexagonView
+                    android:id="@+id/hv_guild_icon"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_centerInParent="true"
+                    app:hexColorString="black" />
+
+                <atlas.com.trainerapp.widgets.TALoadingView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"/>
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="OU"
+                    android:textAllCaps="true"
+                    android:textColor="@color/brand_yellow"
+                    android:textSize="20dp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
 
     </LinearLayout>
 </layout>

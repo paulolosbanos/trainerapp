@@ -1,8 +1,5 @@
 package atlas.com.trainerapp.authentication.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +15,7 @@ public class User extends BaseModel {
     private String firstTimeLogin = "false";
     private String group;
     private String username;
-    private String userType;
+    private String friendCode;
     private List<Team> teams = new ArrayList<Team>();
     private String uniqueId;
 
@@ -78,12 +75,12 @@ public class User extends BaseModel {
         this.firstTimeLogin = firstTimeLogin;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getFriendCode() {
+        return friendCode;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setFriendCode(String friendCode) {
+        this.friendCode = friendCode;
     }
 
     public String getUniqueId() {

@@ -1,5 +1,6 @@
 package atlas.com.trainerapp.main.views.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -29,7 +30,6 @@ public class MainViewAdapter extends FragmentStatePagerAdapter {
 
     public static final String[] TITLE = {"TRAINER","BATTLE","CHAT","TRADE"};
     Context mContext;
-
     public MainViewAdapter(FragmentManager fm, MainActivity mainActivity) {
         super(fm);
         mContext = mainActivity;

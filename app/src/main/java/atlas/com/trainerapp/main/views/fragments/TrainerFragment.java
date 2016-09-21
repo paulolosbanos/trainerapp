@@ -1,23 +1,40 @@
 package atlas.com.trainerapp.main.views.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.json.JSONException;
 
 import atlas.com.trainerapp.R;
+import atlas.com.trainerapp.authentication.models.Team;
 import atlas.com.trainerapp.bases.BaseFragment;
 import atlas.com.trainerapp.bases.interfaces.FragmentBindingSpecs;
 import atlas.com.trainerapp.databinding.FragmentTrainerBinding;
+import atlas.com.trainerapp.firstTimeLogin.models.Pokemon;
 import atlas.com.trainerapp.main.presenters.fragmentPresenters.TrainerPresenter;
+import atlas.com.trainerapp.managers.UserDataManager;
+import atlas.com.trainerapp.utils.ColorUtils;
+import atlas.com.trainerapp.utils.GsonUtils;
+import atlas.com.trainerapp.widgets.TATextView;
 
 /**
  * Created by paulo.losbanos on 24/08/2016.
  */
-public class TrainerFragment extends BaseFragment<FragmentTrainerBinding> implements FragmentBindingSpecs{
+public class TrainerFragment extends BaseFragment<FragmentTrainerBinding> implements FragmentBindingSpecs {
 
     TrainerPresenter mPresenter;
+    UserDataManager mUserDataManager;
+    ViewGroup mView;
+    int[] id = {R.id.tv_slot_1, R.id.tv_slot_2, R.id.tv_slot_3, R.id.tv_slot_4, R.id.tv_slot_5, R.id.tv_slot_6};
+
+
 
     @Nullable
     @Override
@@ -26,13 +43,38 @@ public class TrainerFragment extends BaseFragment<FragmentTrainerBinding> implem
         mContainer = container;
         mInflater = inflater;
         setBindingSpecs(this);
-
-        mPresenter = new TrainerPresenter(getActivity(),getBinding().llMainBody);
+        mUserDataManager = UserDataManager.getInstance();
+        mPresenter = new TrainerPresenter(getActivity(), getBinding().llMainBodyTrainer);
+        mView = rootview;
         init();
         return getBinding().getRoot();
     }
 
     private void init() {
+        getBinding().tvTrainerCode.setText(mUserDataManager.getUser().getFriendCode());
+        getBinding().tvTrainerIgn.setText(mUserDataManager.getUser().getUsername());
+        getBinding().hvGuildIcon.setColor(mUserDataManager.getUser().getGroup());
+        Team currentTeam = null;
+        try {
+            currentTeam = mPresenter.loadTeamView(mUserDataManager.getUser().getTeams(), getBinding().teamView);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        loadNames(currentTeam);
+    }
+
+    private void loadNames(Team currentTeam) {
+        for (int i = 0; i < currentTeam.getMembers().size(); i++) {
+            Pokemon p = (Pokemon) GsonUtils.getObject(currentTeam.getMembers().get(i), Pokemon.class);
+            TATextView slot = (TATextView) getBinding().getRoot().findViewById(id[i]);
+            slot.setText(p.getName());
+            try {
+                slot.setBackgroundColor(ColorUtils.getColor(getActivity(),p.getJSONTyping().getJSONObject("slot-1").getString("type")));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 

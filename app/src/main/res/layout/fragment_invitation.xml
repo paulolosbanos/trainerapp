@@ -50,7 +50,7 @@
                 <atlas.com.trainerapp.widgets.TATextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Invitation code"
+                    android:text="Friend code"
                     android:textAllCaps="true"
                     android:textColor="@color/brand_yellow"
                     android:textSize="15dp" />

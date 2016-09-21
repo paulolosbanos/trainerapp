@@ -37,7 +37,7 @@
                     android:gravity="center"
                     android:text="TRAINER"
                     android:textColor="@color/brand_white"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     app:font="montserrat"/>
 
                 <atlas.com.trainerapp.widgets.TATextView
@@ -46,7 +46,7 @@
                     android:gravity="center"
                     android:text=" APP"
                     android:textColor="@color/brand_yellow"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     app:font="montserrat"/>
 
 

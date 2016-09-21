@@ -14,4 +14,9 @@ public class GsonUtils {
         return new Gson().toJson(obj);
     }
     public static JSONObject toJSONObject(String json) throws JSONException {return new JSONObject(json);}
+
+    public static Object getObject(String jsonString,Class<?> tClass) {
+        Gson gson = new Gson();
+        return gson.fromJson(jsonString,tClass);
+    }
 }

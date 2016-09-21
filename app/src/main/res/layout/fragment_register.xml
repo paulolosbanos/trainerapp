@@ -42,18 +42,18 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="TRAINER"
-                    app:font="montserrat"
                     android:textColor="@color/brand_white"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:font="montserrat" />
 
                 <atlas.com.trainerapp.widgets.TATextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text=" APP"
-                    app:font="montserrat"
                     android:textColor="@color/brand_yellow"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    app:font="montserrat" />
 
 
             </LinearLayout>
@@ -64,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <atlas.com.trainerapp.widgets.TAEditText
                 android:id="@+id/et_username"
                 style="@style/TA.Auth.EditText"
@@ -71,41 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:drawableLeft="@drawable/ic_user"
-                android:hint="USERNAME" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <atlas.com.trainerapp.widgets.TAEditText
-                android:id="@+id/et_password"
-                style="@style/TA.Auth.EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_pwd"
-                android:hint="PASSWORD" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <atlas.com.trainerapp.widgets.TAEditText
-                android:id="@+id/et_confirm_password"
-                style="@style/TA.Auth.EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:drawableLeft="@drawable/ic_pwd"
-                android:hint="CONFIRM PASSWORD"
+                android:hint="USERNAME"
                 android:visibility="gone" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -141,27 +109,62 @@
 
         </LinearLayout>
 
-            <atlas.com.trainerapp.widgets.TAButton
-                android:id="@+id/btn_register"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <atlas.com.trainerapp.widgets.TAEditText
+                android:id="@+id/et_password"
+                style="@style/TA.Auth.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="@drawable/selector_btn_register"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp"
-                android:text="REGISTER"
-                android:textColor="@color/brand_black"
-                android:textSize="15dp"/>
+                android:drawableLeft="@drawable/ic_pwd"
+                android:hint="PASSWORD"
+                android:inputType="textPassword" />
 
-            <atlas.com.trainerapp.widgets.TATextView
-                android:id="@+id/btn_back"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <atlas.com.trainerapp.widgets.TAEditText
+                android:id="@+id/et_confirm_password"
+                style="@style/TA.Auth.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_margin="20dp"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                app:font="montserrat"
-                android:text="Back"/>
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/ic_pwd"
+                android:hint="CONFIRM PASSWORD"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+        <atlas.com.trainerapp.widgets.TAButton
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/selector_btn_register"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="REGISTER"
+            android:textColor="@color/brand_black"
+            android:textSize="15dp" />
+
+        <atlas.com.trainerapp.widgets.TATextView
+            android:id="@+id/btn_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="Back"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:font="montserrat" />
     </LinearLayout>
 </layout>

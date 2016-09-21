@@ -13,9 +13,8 @@ import atlas.com.trainerapp.bases.BaseModel;
  */
 public class Team extends BaseModel {
 
-    @SerializedName("is-main-team")
-    @Expose
-    private Boolean isMainTeam;
+
+    private String mainTeam;
     @SerializedName("members")
     @Expose
     private List<String> members = new ArrayList<String>();
@@ -38,18 +37,12 @@ public class Team extends BaseModel {
         return null;
     }
 
-    /**
-     * @return The isMainTeam
-     */
-    public Boolean getIsMainTeam() {
-        return isMainTeam;
+    public String getMainTeam() {
+        return mainTeam;
     }
 
-    /**
-     * @param isMainTeam The is-main-team
-     */
-    public void setIsMainTeam(Boolean isMainTeam) {
-        this.isMainTeam = isMainTeam;
+    public void setMainTeam(String mainTeam) {
+        this.mainTeam = mainTeam;
     }
 
     /**
