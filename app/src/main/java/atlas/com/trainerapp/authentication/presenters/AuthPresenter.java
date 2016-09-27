@@ -8,10 +8,15 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
 import atlas.com.trainerapp.R;
+import atlas.com.trainerapp.authentication.models.Auth;
 import atlas.com.trainerapp.authentication.models.User;
 import atlas.com.trainerapp.authentication.presenters.interfaces.SignInListener;
 import atlas.com.trainerapp.authentication.presenters.interfaces.retrofit.AuthService;
@@ -48,6 +53,7 @@ public class AuthPresenter extends BasePresenter {
         mRetrofitManager = RetrofitManager.getInstance();
         mAuthService = mRetrofitManager.getRetrofitInstance().create(AuthService.class);
         mUserDataManager = UserDataManager.getInstance();
+
     }
 
     public void onStartAuth() {
@@ -62,27 +68,38 @@ public class AuthPresenter extends BasePresenter {
 
     public void routeUser() {
         if (!isLoggedin) {
-            mAuthService.getUserByUid(mUser.getUid())
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(user -> {
-                        boolean isNull = user == null;
-                        if(isNull) {
-                            routeUser();
-                            return;
-                        }
-                        if (user.getFirstTimeLogin().equals("true") && !isLoggedin) {
-                            mInstance.startActivity(new Intent(mInstance, FirstTimeLoginActivity.class));
-                        } else if (!isLoggedin){
-                            mInstance.startActivity(new Intent(mInstance, MainActivity.class));
-                        }
-                        mUserDataManager.setUser(user);
-                        mInstance.finish();
-                        mInstance.overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
-                        isLoggedin = true;
-                    });
-        }
+            FirebaseDatabase.getInstance().getReference("auth").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Auth auth = dataSnapshot.getValue(Auth.class);
+                    mAuthService.getUserByUid(mUser.getUid(),auth.getKey())
+                            .subscribeOn(Schedulers.newThread())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(user -> {
+                                boolean isNull = user == null;
+                                if(isNull) {
+                                    routeUser();
+                                    return;
+                                }
+                                if (user.getFirstTimeLogin().equals("true") && !isLoggedin) {
+                                    mInstance.startActivity(new Intent(mInstance, FirstTimeLoginActivity.class));
+                                } else if (!isLoggedin){
+                                    mInstance.startActivity(new Intent(mInstance, MainActivity.class));
+                                }
+                                mUserDataManager.setUser(user);
+                                mUserDataManager.setAuth(auth);
+                                mInstance.finish();
+                                mInstance.overridePendingTransition(R.anim.slide_out,R.anim.slide_in);
+                                isLoggedin = true;
+                            });
+                }
 
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     public FirebaseAuth.AuthStateListener createAuthStateListener() {

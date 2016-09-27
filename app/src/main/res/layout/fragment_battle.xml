@@ -15,8 +15,59 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="20dp">
+
+        <atlas.com.trainerapp.widgets.TATextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Battle Format"
+            android:textAllCaps="true"
+            android:textColor="@color/brand_black"
+            android:textSize="14dp"
+            app:font="montserrat" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/brand_grey">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <atlas.com.trainerapp.widgets.TATextView
+                        android:id="@+id/format"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OU"
+                        android:textAllCaps="true"
+                        android:textColor="@color/brand_white"
+                        android:textSize="18dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -123,7 +174,7 @@
                                 android:id="@+id/tv_trainer_ign_vs"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="pau1214"
+                                android:text="\?????"
                                 android:textAllCaps="true"
                                 android:textColor="@color/brand_black"
                                 android:textSize="14dp"
@@ -146,8 +197,8 @@
                 android:padding="20dp">
 
                 <atlas.com.trainerapp.widgets.TAHexagonView
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
                     android:layout_centerInParent="true"
                     app:hexColorString="white" />
 
@@ -162,7 +213,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <atlas.com.trainerapp.widgets.TATextView
                     android:layout_width="wrap_content"
@@ -177,6 +228,54 @@
             </RelativeLayout>
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:visibility="invisible"
+            android:background="@color/dirty_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="0000-0000-0000"
+                    android:textColor="@color/brand_black"
+                    android:textSize="18dp"
+                    app:font="montserrat" />
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="ansdinadas"
+                    android:textColor="@color/brand_black"
+                    android:textSize="14dp"
+                    app:font="montserrat" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <atlas.com.trainerapp.widgets.TAButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="30dp"
+            android:background="@drawable/selector_btn_login"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="SEARCH"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </layout>

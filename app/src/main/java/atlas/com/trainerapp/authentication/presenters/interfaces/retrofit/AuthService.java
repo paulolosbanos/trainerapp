@@ -4,6 +4,7 @@ import atlas.com.trainerapp.authentication.models.User;
 import atlas.com.trainerapp.managers.RetrofitManager;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -11,7 +12,7 @@ import rx.Observable;
  */
 public interface AuthService {
 
-    @GET("users/{id}.json?auth="+ RetrofitManager.AUTHKEY)
-    Observable<User> getUserByUid(@Path("id") String id);
+    @GET("users/{id}.json")
+    Observable<User> getUserByUid(@Path("id") String id,@Query("auth") String key);
 
 }

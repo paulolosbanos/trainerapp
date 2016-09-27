@@ -44,7 +44,6 @@ public class AuthActivity extends BaseActivity<ActivityAuthBinding> implements A
     @Override
     public void onSignIn(FirebaseUser user) {
         Observable.just(true)
-                .delay(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(bool -> {
                     if (user != null) {

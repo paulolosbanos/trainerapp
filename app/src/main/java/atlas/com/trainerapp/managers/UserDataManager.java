@@ -1,5 +1,6 @@
 package atlas.com.trainerapp.managers;
 
+import atlas.com.trainerapp.authentication.models.Auth;
 import atlas.com.trainerapp.authentication.models.User;
 
 /**
@@ -11,6 +12,7 @@ public class UserDataManager {
     private static UserDataManager mInstance;
 
     private User user;
+    private Auth auth;
 
     public static UserDataManager getInstance() {
         if(mInstance == null) {
@@ -29,5 +31,13 @@ public class UserDataManager {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Auth getAuth() {
+        return auth;
+    }
+
+    public void setAuth(Auth auth) {
+        this.auth = auth;
     }
 }

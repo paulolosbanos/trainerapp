@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+
+import com.jakewharton.rxbinding.support.v4.view.RxViewPager;
 
 import atlas.com.trainerapp.R;
 import atlas.com.trainerapp.bases.BaseActivity;
@@ -51,6 +54,23 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements A
                 .subscribe(aVoid -> {
                     mPresenter.signOut();
                 });
+        RxViewPager.pageSelections(mPager)
+                .subscribe(integer -> {
+                    showHelp(integer);
+                });
+    }
+
+    private void showHelp(Integer integer) {
+        switch (integer) {
+            case MainViewAdapter.TRAINER:
+                mPresenter.showTrainerHelpSnackBar();
+                break;
+            case MainViewAdapter.BATTLE:
+                break;
+            case MainViewAdapter.CHAT:
+                break;
+            default:
+        }
     }
 
     @Override
