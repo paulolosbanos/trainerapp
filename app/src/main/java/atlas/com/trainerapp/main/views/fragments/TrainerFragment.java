@@ -22,6 +22,8 @@ import atlas.com.trainerapp.main.presenters.fragmentPresenters.TrainerPresenter;
 import atlas.com.trainerapp.managers.UserDataManager;
 import atlas.com.trainerapp.utils.ColorUtils;
 import atlas.com.trainerapp.utils.GsonUtils;
+import atlas.com.trainerapp.widgets.TAHexagonView;
+import atlas.com.trainerapp.widgets.TATeamView;
 import atlas.com.trainerapp.widgets.TATextView;
 
 /**
@@ -33,8 +35,6 @@ public class TrainerFragment extends BaseFragment<FragmentTrainerBinding> implem
     UserDataManager mUserDataManager;
     ViewGroup mView;
     int[] id = {R.id.tv_slot_1, R.id.tv_slot_2, R.id.tv_slot_3, R.id.tv_slot_4, R.id.tv_slot_5, R.id.tv_slot_6};
-
-
 
     @Nullable
     @Override
@@ -54,6 +54,36 @@ public class TrainerFragment extends BaseFragment<FragmentTrainerBinding> implem
         getBinding().tvTrainerCode.setText(mUserDataManager.getUser().getFriendCode());
         getBinding().tvTrainerIgn.setText(mUserDataManager.getUser().getUsername());
         getBinding().hvGuildIcon.setColor(mUserDataManager.getUser().getGroup());
+
+        getBinding().llPokemonLogo.setVisibility(View.GONE);
+        getBinding().llPokemonPrimary.setVisibility(View.GONE);
+        getBinding().llPokemonMoves.setVisibility(View.GONE);
+        getBinding().llControls.setVisibility(View.GONE);
+
+        getBinding().back.clickObservable().subscribe(aVoid -> {
+            getBinding().rlTrainerLogo.setVisibility(View.VISIBLE);
+            getBinding().teamView.setVisibility(View.VISIBLE);
+            getBinding().teamNames.setVisibility(View.VISIBLE);
+
+            getBinding().llPokemonLogo.setVisibility(View.GONE);
+            getBinding().llPokemonPrimary.setVisibility(View.GONE);
+            getBinding().llPokemonMoves.setVisibility(View.GONE);
+            getBinding().llControls.setVisibility(View.GONE);
+
+        });
+        getBinding().teamView.slotClick(name -> {
+            getBinding().rlTrainerLogo.setVisibility(View.GONE);
+            getBinding().teamView.setVisibility(View.GONE);
+            getBinding().teamNames.setVisibility(View.GONE);
+
+            getBinding().llPokemonLogo.setVisibility(View.VISIBLE);
+            getBinding().llPokemonPrimary.setVisibility(View.VISIBLE);
+            getBinding().llPokemonMoves.setVisibility(View.VISIBLE);
+            getBinding().llControls.setVisibility(View.VISIBLE);
+            getBinding().save.setEnabled(false);
+            Pokemon current = mPresenter.updateSlot(name);
+            loadEditableData(current);
+        });
         Team currentTeam = null;
         try {
             currentTeam = mPresenter.loadTeamView(mUserDataManager.getUser().getTeams(), getBinding().teamView);
@@ -64,13 +94,37 @@ public class TrainerFragment extends BaseFragment<FragmentTrainerBinding> implem
         loadNames(currentTeam);
     }
 
+    private void loadEditableData(Pokemon current) {
+        //getBinding().llPokemonLogo
+        //getBinding().llPokemonPrimary
+        //getBinding().llPokemonMoves
+        Log.e("TrainerFragment",GsonUtils.toJSONString(current));
+        getBinding().hvLeftTyping2.setColor(TAHexagonView.GREY);
+        getBinding().hvRightTyping2.setColor(TAHexagonView.GREY);
+        getBinding().hvMidTyping1.setColor(TAHexagonView.BLACK);
+
+        if(current.getTyping().get("slot-2") != null) {
+            getBinding().hvLeftTyping2.setColor(current.getTyping().get("slot-2").getType());
+            getBinding().hvRightTyping2.setColor(current.getTyping().get("slot-2").getType());
+            getBinding().hvMidTyping1.setColor(current.getTyping().get("slot-1").getType());
+        } else {
+            getBinding().hvLeftTyping2.setColor(current.getTyping().get("slot-1").getType());
+            getBinding().hvRightTyping2.setColor(current.getTyping().get("slot-1").getType());
+            getBinding().hvMidTyping1.setColor(current.getTyping().get("slot-1").getType());
+        }
+
+
+
+
+    }
+
     private void loadNames(Team currentTeam) {
         for (int i = 0; i < currentTeam.getMembers().size(); i++) {
             Pokemon p = (Pokemon) GsonUtils.getObject(currentTeam.getMembers().get(i), Pokemon.class);
             TATextView slot = (TATextView) getBinding().getRoot().findViewById(id[i]);
             slot.setText(p.getName());
             try {
-                slot.setBackgroundColor(ColorUtils.getColor(getActivity(),p.getJSONTyping().getJSONObject("slot-1").getString("type")));
+                slot.setBackgroundColor(ColorUtils.getColor(getActivity(), p.getJSONTyping().getJSONObject("slot-1").getString("type")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }

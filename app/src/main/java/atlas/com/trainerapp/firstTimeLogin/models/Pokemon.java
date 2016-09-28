@@ -20,6 +20,10 @@ public class Pokemon {
     private HashMap<String, Stats> stats;
     private HashMap<String, Typing> typing;
 
+    private HashMap<String, Moves> selectedMoves;
+    private List<String> efforValues;
+    private String ability;
+    private String item;
 
     public Long getId() {
         return id;
@@ -71,6 +75,38 @@ public class Pokemon {
 
     public JSONObject getJSONTyping() throws JSONException {
         return GsonUtils.toJSONObject(GsonUtils.toJSONString(typing));
+    }
+
+    public HashMap<String, Moves> getSelectedMoves() {
+        return selectedMoves;
+    }
+
+    public void setSelectedMoves(HashMap<String, Moves> selectedMoves) {
+        this.selectedMoves = selectedMoves;
+    }
+
+    public List<String> getEfforValues() {
+        return efforValues;
+    }
+
+    public void setEfforValues(List<String> efforValues) {
+        this.efforValues = efforValues;
+    }
+
+    public String getAbility() {
+        return ability;
+    }
+
+    public void setAbility(String ability) {
+        this.ability = ability;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
     }
 
     public List<String> getListMoves() {

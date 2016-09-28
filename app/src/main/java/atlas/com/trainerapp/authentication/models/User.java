@@ -91,6 +91,15 @@ public class User extends BaseModel {
         this.uniqueId = uniqueId;
     }
 
+    public Team getMainTeam() {
+        for (Team t : teams) {
+            if(t.getMainTeam().equals("true")) {
+                return t;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String getNode() {
         return USER;

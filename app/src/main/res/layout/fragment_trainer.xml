@@ -104,6 +104,7 @@
             android:layout_marginBottom="30dp" />
 
         <LinearLayout
+            android:id="@+id/team_names"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -214,6 +215,176 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_pokemon_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <atlas.com.trainerapp.widgets.TAHexagonView
+                android:id="@+id/hv_left_typing_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:rotation="90"
+                app:hexColorString="grey" />
+
+            <atlas.com.trainerapp.widgets.TAHexagonView
+                android:id="@+id/hv_mid_typing_1"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:padding="5dp"
+                android:rotation="90"
+                app:hexColorString="black" />
+
+            <atlas.com.trainerapp.widgets.TAHexagonView
+                android:id="@+id/hv_right_typing_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:rotation="90"
+                app:hexColorString="grey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_pokemon_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <atlas.com.trainerapp.widgets.TATextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:text="skarmory"
+                android:textAllCaps="true" />
+
+            <atlas.com.trainerapp.widgets.TATextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@color/brand_grey"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="252 / 252 / 0 / 0 / 0 / 4"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_pokemon_moves"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:id="@+id/tv_move_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/brand_white"
+                    android:gravity="center"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:text="move 1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:id="@+id/tv_move_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/brand_white"
+                    android:gravity="center"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:text="move 2"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:id="@+id/tv_move_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/brand_white"
+                    android:gravity="center"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:text="move 3"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+
+                <atlas.com.trainerapp.widgets.TATextView
+                    android:id="@+id/tv_move_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/brand_white"
+                    android:gravity="center"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:text="move 4"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <atlas.com.trainerapp.widgets.TAImageButton
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/selector_btn_back_trainer_fragment"
+                android:elevation="3dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+            <atlas.com.trainerapp.widgets.TAImageButton
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/selector_btn_back_trainer_fragment"
+                android:elevation="3dp"
+                android:padding="5dp"
+                android:src="@drawable/check" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 </layout>
